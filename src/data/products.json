@@ -1,0 +1,27 @@
+{
+    "header": {
+        "title": [
+            "Small business? Big business?",
+            "  We got you covered."
+        ],
+        "subtitle" : "We build cloud-first products that let businesses provide better digital experiences to their customers. From web to social to infinite scalability at a fraction of the cost. We approach every business category individually, and our products are used by big brand names you know to the small store in your local market."
+    },
+    "cards": [
+        {
+            "image": "/img/logo-boost.png",
+            "title": "For small & medium businesses",
+            "desc": "An app that helps businesses setup, manage and grow online. Across multiple channels and social networks.",
+            "action": "Read More",
+            "primary": "primary",
+            "location": "https://www.getboost360.com/"
+        },
+        {
+            "image": "/img/logo-kitsune.png",
+            "title": "For large enterprises",
+            "desc": "An open source framework that makes legacy web apps 3x faster and infinitely scalable on any infrastructure.",
+            "action": "Read More",
+            "primary": "#f06428",
+            "location": "https://www.getkitsune.com/"
+        }
+    ]
+}

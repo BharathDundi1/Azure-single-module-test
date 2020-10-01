@@ -1,0 +1,39 @@
+{
+    "header": {
+        "title": [
+            "Innovations ",
+            " that simplify business"
+        ],
+        "subtitle": ""
+    },
+    "list": [
+        {
+            "title": "Boost Keyboard",
+            "desc": "Share deals, offers, product details, business info quickly as you chat with potential customers on WhatsApp, Instagram, Hike or Facebook Messenger, etc.",
+            "image": "/img/keyboard-large.png",
+            "thumb": "/img/keyboard-icon.svg",
+            "color": "#6797D1"
+        },
+        {
+            "title": "ANA Chatbot",
+            "desc": "We built the world’s first open-source GUI based chatbot designer so that a business can easily put together a customized chatbot - that speaks to its customers in its language.",
+            "image": "/img/ana-large.png",
+            "thumb": "/img/ana-icon.svg",
+            "color": "#8DC63F"
+        },
+        {
+            "title": "Rocket Singh",
+            "desc": "A field-sales assistant app that improves the efficiency of sales agents. From logging sales to performance reports, from attendance to managing meetings and more – it’s all there.",
+            "image": "/img/singh-large.png",
+            "thumb": "/img/singh-icon.svg",
+            "color": "#FFB900"
+        },
+        {
+            "title": "kit-Proxy",
+            "desc": "An open-source serverless programmable proxy that helps increase the performance, scalability and availability of legacy on-premise applications.",
+            "image": "/img/proxy-large.png",
+            "thumb": "/img/proxy.svg",
+            "color": "#F5A623"
+        }
+    ]
+}

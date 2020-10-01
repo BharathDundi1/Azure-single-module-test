@@ -1,0 +1,10 @@
+.copyright-text{
+  display: flex;
+  justify-content: space-between;
+
+  margin: 0 12.5%;
+}
+
+.copyright-text a {
+  color: white;
+}

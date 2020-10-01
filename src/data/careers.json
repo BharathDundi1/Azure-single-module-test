@@ -1,0 +1,44 @@
+{
+    "header": {
+        "title": ["Game for", " a challenge?"],
+        "subtitle": "If you are passionate about solving similar problems that we are attempting, and you want to put your name on something substantial, check out our careers page. We won’t promise it’ll be easy, but it will definitely be one heck of a ride."
+    },
+    "testimonials": [
+        {
+            "image": "img/emp/azra.jpg",
+            "desc": "NowFloats have built confidence of the employees whatever may be the situation. The positive energy here makes me go above at work all the time.",
+            "name": "Azra Fatima",
+            "designation": "Boost - Support Specialist"
+        },
+        {
+            "image": "img/emp/arpan.jpg",
+            "desc": "Hackathons conducted at NowFloats are the prime examples of fostering creativity and innovation. Encouragement to pursue problem statements without bias has been an enabler for innovation.",
+            "name": "Arpan Ramtek",
+            "designation": "Sr Product Manager"
+        },
+        {
+            "image": "img/emp/manjeet.jpg",
+            "desc": "New ideas are always encouraged here. Every suggestion is evaluated irrespetive of the team from where it's coming from.",
+            "name": "Manjeet",
+            "designation": "Boost - Sr Support Specialist"
+        },
+        {
+            "image": "img/oval.jpg",
+            "desc": "NowFloats is world class product startup with excellent execution of usability. I am proud to be part of NowFloats.",
+            "name": "Sneha",
+            "designation": "Boost - Experience Engineer"
+        },
+        {
+            "image": "img/oval.jpg",
+            "desc": "The number of people interacting with my code motivates me to go above and beyond at work.",
+            "name": "Saurav Prakash",
+            "designation": "Boost - Experience Engineer"
+        },
+        {
+            "image": "img/emp/abrar.jpg",
+            "desc": "I have a great degree of control and freedom within my job. I love the collaborative environment. It's always changing — always evolving.",
+            "name": "Md Abrar Ahmed",
+            "designation": "Boost Experience - QA"
+        }
+    ]
+}

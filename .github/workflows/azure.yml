@@ -1,0 +1,33 @@
+# This workflow will build and push a new container image to Amazon container registry
+# and then will deploy a new task definition to Amazon ECS, when a release is created
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+name: Generate releases.zip
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '3.1.x'  # SDK Version to use; x will use the latest version of the 3.1 channel
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Publish project
+      run: dotnet publish ./Kitsune.Identifier/Kitsune.Identifier.csproj -c Release -o /app/publish --source https://nuget.withfloats.com/api/v2 --source https://api.nuget.org/v3/index.json --source https://nuget.pkg.github.com/nowfloats/index.json
+        
+    - name: Archive Release
+      uses: thedoctor0/zip-release@master
+      with:
+        filename: 'release.zip'
+        path: /app/publish
+        exclusions: '*.git* /*node_modules/* .editorconfig'

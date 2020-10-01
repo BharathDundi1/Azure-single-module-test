@@ -1,33 +1,50 @@
-# This workflow will build and push a new container image to Amazon container registry
-# and then will deploy a new task definition to Amazon ECS, when a release is created
-
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
 
-name: Generate releases.zip
-
+name: Deploy 
 jobs:
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
+  build:
+      name: Deploying to app service
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v1
 
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '3.1.x'  # SDK Version to use; x will use the latest version of the 3.1 channel
-    - name: Install dependencies
-      run: dotnet restore
-    - name: Publish project
-      run: dotnet publish ./Kitsune.Identifier/Kitsune.Identifier.csproj -c Release -o /app/publish --source https://nuget.withfloats.com/api/v2 --source https://api.nuget.org/v3/index.json --source https://nuget.pkg.github.com/nowfloats/index.json
-        
-    - name: Archive Release
-      uses: thedoctor0/zip-release@master
-      with:
-        filename: 'release.zip'
-        path: /app/publish
-        exclusions: '*.git* /*node_modules/* .editorconfig'
+
+        - name: Azure login
+          env:
+            azure_username: ${{secrets.AZURE_USERNAME}}
+            azure_password: ${{secrets.AZURE_PASSWORD}}
+          run: |
+               az login -u $azure_username -p $azure_password
+        - name: ACR login
+          env:
+            container_registry_url: ${{secrets.CONTAINER_REGISTRY_URL}}
+            acr_username: ${{secrets.ACR_USERNAME}}
+            acr_password: ${{secrets.ACR_PASSWORD}}
+          run: |
+               docker login $container_registry_url --username $acr_username --password $acr_password
+        - name: Installing webpack
+          run: |
+               npm install --save-dev webpack
+        - name: Containerizing in progress
+          env:
+            name_for_docker_image: ${{secrets.NAME_FOR_DOCKER_IMAGE}}
+            docker_file_location: ${{ secrets.DOCKER_FILE_LOCATION }}
+          run: |
+               docker build --tag $name_for_docker_image $docker_file_location
+        - name: Tagging image
+          env:
+            name_for_docker_image: ${{secrets.NAME_FOR_DOCKER_IMAGE}}
+            container_registry_url: ${{secrets.CONTAINER_REGISTRY_URL}}
+          run: |
+               docker tag $name_for_docker_image $container_registry_url/$name_for_docker_image:latest
+        - name: Pushing image to ACR
+          env:
+            container_registry_url: ${{secrets.CONTAINER_REGISTRY_URL}}
+            name_for_docker_image: ${{secrets.NAME_FOR_DOCKER_IMAGE}}
+          run: |
+               docker push $container_registry_url/$name_for_docker_image:latest 

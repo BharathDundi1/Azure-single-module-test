@@ -47,4 +47,7 @@ jobs:
             container_registry_url: ${{secrets.CONTAINER_REGISTRY_URL}}
             name_for_docker_image: ${{secrets.NAME_FOR_DOCKER_IMAGE}}
           run: |
-               docker push $container_registry_url/$name_for_docker_image:latest 
+               docker push $container_registry_url/$name_for_docker_image:latest
+
+        - if: CONTAINER_REGISTRY_URL == "true"
+          run: echo "Conatiner exists"
